@@ -1,11 +1,12 @@
 sudo: required
 services:
   - docker
+
 before_install:
-  - docker build -f Dockerfile.dev .
+  - docker build -t tobiasandre/docker-react -f Dockerfile.dev .
 
 script:
-  - docker run npm run test -- --coverage
+  - docker run tobiasandre/docker-react npm run test -- --coverage
 
 deploy:
   provider: elasticbeanstalk
